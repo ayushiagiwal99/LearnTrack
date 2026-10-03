@@ -2,7 +2,7 @@
  * Represents a trainer enrolled in the LearnTrack system.
  * Extends Person to reuse common personal information.
  */
-package main.java.org.learnTrack.entity;
+package com.learntrack.entity;
 
 public class Trainer extends Person {
     private String specialization;

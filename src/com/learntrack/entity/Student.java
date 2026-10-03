@@ -2,7 +2,7 @@
  * Represents a student enrolled in the LearnTrack system.
  * Extends Person to reuse common personal information.
  */
-package main.java.org.learnTrack.entity;
+package com.learntrack.entity;
 
 public class Student extends Person {
     private String batch;

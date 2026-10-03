@@ -2,7 +2,7 @@
  * Represents a student's enrollment in a course, including enrollment
  * date and current enrollment status.
  */
-package main.java.org.learnTrack.entity;
+package com.learntrack.entity;
 
 import java.time.LocalDate;
 

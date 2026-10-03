@@ -2,7 +2,7 @@
  * Represents the common information shared by different types of people/users
  * in the LearnTrack system.
  */
-package main.java.org.learnTrack.entity;
+package com.learntrack.entity;
 
 public class Person {
     private int id;

@@ -1,7 +1,7 @@
 /**
  * Defines the possible statuses of a course enrollment.
  */
-package main.java.org.learnTrack.entity;
+package com.learntrack.entity;
 
 public enum EnrollmentStatus {
     ACTIVE,

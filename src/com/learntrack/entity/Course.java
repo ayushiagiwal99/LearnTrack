@@ -1,7 +1,7 @@
 /**
  * Represents a course available in the LearnTrack system.
  */
-package main.java.org.learnTrack.entity;
+package com.learntrack.entity;
 
 public class Course {
     private int courseId;
