@@ -5,4 +5,9 @@
 package com.learntrack.service;
 
 public class CourseService {
+//    Add new course
+//
+//    View all courses
+//
+//    Activate/Deactivate a course
 }
