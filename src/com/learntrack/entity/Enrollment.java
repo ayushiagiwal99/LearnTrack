@@ -4,6 +4,8 @@
  */
 package com.learntrack.entity;
 
+import com.learntrack.enums.EnrollmentStatus;
+
 import java.time.LocalDate;
 
 public class Enrollment {
