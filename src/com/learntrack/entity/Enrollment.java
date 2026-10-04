@@ -68,11 +68,21 @@ public class Enrollment {
     public void setStatus(EnrollmentStatus status) {
         this.status = status;
     }
+
     public void complete() {
         this.status = EnrollmentStatus.COMPLETED;
     }
 
     public void cancel() {
         this.status = EnrollmentStatus.CANCELLED;
+    }
+
+    @Override
+    public String toString() {
+        return "ID: " + enrollemntId
+            + ", Student ID: " + studentId
+            + ", Course ID: " + courseId
+            + ", Enrollment Date: " + enrollmentDate
+            + ", Status: " + status;
     }
 }

@@ -15,7 +15,6 @@ public class MenuConstants {
     public static final int VIEW_STUDENTS = 2;
     public static final int SEARCH_STUDENT = 3;
     public static final int DEACTIVATE_STUDENT = 4;
-    public static final int BACK = 5;
 
     // Course menu
     public static final int ADD_COURSE = 1;
@@ -28,4 +27,6 @@ public class MenuConstants {
     public static final int VIEW_STUDENT_ENROLLMENTS = 2;
     public static final int COMPLETE_ENROLLMENT = 3;
     public static final int CANCEL_ENROLLMENT = 4;
+
+    public static final int BACK = 5;
 }

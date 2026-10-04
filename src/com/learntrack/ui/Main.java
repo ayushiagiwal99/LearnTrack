@@ -15,13 +15,8 @@ import com.learntrack.service.EnrollmentService;
 import com.learntrack.service.StudentService;
 
 import java.util.ArrayList;
-import java.util.Locale;
 import java.util.Scanner;
 
-/**
- * Entry point and console user interface for the LearnTrack application.
- * Handles menus, user input, and calls the appropriate service operations.
- */
 public class Main {
 
     private static final Scanner scanner = new Scanner(System.in);
@@ -127,23 +122,19 @@ public class Main {
         String lastName = readString("Enter last name: ");
         String email = readString("Enter email: ");
         String batch = readString("Enter batch: ");
-
         studentService.addStudent(firstName, lastName, email, batch);
-
         System.out.println( "Student added successfully.");
     }
 
     private static void viewStudents() {
 
         ArrayList<Student> students = studentService.listStudents();
-
         if (students.isEmpty()) {
             System.out.println("No students found.");
             return;
         }
 
         System.out.println("\n===== Students =====");
-
         for (Student student : students) {
             System.out.println(student);
         }

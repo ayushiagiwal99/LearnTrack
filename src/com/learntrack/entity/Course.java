@@ -53,4 +53,13 @@ public class Course {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    @Override
+    public String toString() {
+        return "ID: " + courseId
+            + ", Course: " + courseName
+            + ", Description: " + description
+            + ", Duration: " + durationInWeeks + " weeks"
+            + ", Active: " + active;
+    }
 }
