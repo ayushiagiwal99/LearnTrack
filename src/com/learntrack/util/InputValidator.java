@@ -8,7 +8,7 @@ import com.learntrack.entity.Student;
 import com.learntrack.exception.InvalidInputException;
 
 public class InputValidator {
-    // validate field
+    // validate string field
     public static void validateField(String fieldName, String value) throws InvalidInputException {
         if (value == null || value.trim().isEmpty()) {
             throw new InvalidInputException(
@@ -17,25 +17,26 @@ public class InputValidator {
         }
     }
 
+    // validate number
+    public static void validatePositiveNumber(
+            String fieldName,
+            int value) throws InvalidInputException {
+
+        if (value <= 0) {
+            throw new InvalidInputException(
+                    fieldName + " must be greater than 0."
+            );
+        }
+    }
+
     // Validates email format
-    public static boolean isValidEmail(String email) {
-        return email != null && email.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$");
-    }
+    public static void validateEmail(String email) throws InvalidInputException {
 
-    // validate student
-    public static void validateStudent(Student student)
-            throws InvalidInputException {
-
-        if (student == null) {
-            throw new InvalidInputException("Student cannot be null.");
-        }
-
-        validateField("First name", student.getFirstName());
-        validateField("Last name", student.getLastName());
-        validateField("Batch", student.getBatch());
-
-        if (!isValidEmail(student.getEmail())) {
-            throw new InvalidInputException("Invalid email address.");
+        if (email == null || !email.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$")) {
+            throw new InvalidInputException(
+                    "Invalid email address."
+            );
         }
     }
+
 }

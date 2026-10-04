@@ -22,19 +22,19 @@ public class StudentService {
         String email,
         String batch) throws InvalidInputException {
 
+        InputValidator.validateField("First name", firstName);
+        InputValidator.validateField("Last name", lastName);
+        InputValidator.validateField("Batch", batch);
+        InputValidator.validateEmail(email);
+
         Student student = new Student(
-            0,
+            IdGenerator.generateStudentId(),
             firstName,
             lastName,
             email,
             batch,
             true
         );
-
-        InputValidator.validateStudent(student);
-
-        student.setId(IdGenerator.generateId());
-
         students.add(student);
 
         return student;

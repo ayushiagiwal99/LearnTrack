@@ -4,9 +4,23 @@
 package com.learntrack.util;
 
 public class IdGenerator {
-    private static int idCounter = 1; // Centralized counter
+    // Centralized counter
+    private static int studentIdCounter = 1;
+    private static int courseIdCounter = 1;
+    private static int enrollmentIdCounter = 1;
 
-    public static Integer generateId() {
-        return idCounter++; // return and then increment
+    // cannot create object of IdGenerator
+    private IdGenerator() {};
+
+    public static int generateStudentId() {
+        return studentIdCounter++; // return and then increment
+    }
+
+    public static int generateCourseId() {
+        return courseIdCounter++; // return and then increment
+    }
+
+    public static int generateEnrollmentId() {
+        return enrollmentIdCounter++; // return and then increment
     }
 }

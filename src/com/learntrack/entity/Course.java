@@ -6,22 +6,20 @@ package com.learntrack.entity;
 public class Course {
     private int courseId;
     private String courseName;
+    private String description;
     private int durationInWeeks;
     private boolean active;
 
-    public Course(int courseId, String courseName, int durationInWeeks, boolean active) {
+    public Course(int courseId, String courseName, String description, int durationInWeeks, boolean active) {
         this.courseId = courseId;
         this.courseName = courseName;
+        this.description = description;
         this.durationInWeeks = durationInWeeks;
         this.active = active;
     }
 
     public int getCourseId() {
         return courseId;
-    }
-
-    public void setCourseId(int courseId) {
-        this.courseId = courseId;
     }
 
     public String getCourseName() {
@@ -46,5 +44,13 @@ public class Course {
 
     public void setActive(boolean active) {
         this.active = active;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
