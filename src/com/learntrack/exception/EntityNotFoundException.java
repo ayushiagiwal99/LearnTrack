@@ -1,6 +1,5 @@
 /**
- * Exception thrown when user-provided input does not meet the
- * required validation rules.
+ * Exception thrown when an entity with the specified identifier
  */
 package com.learntrack.exception;
 

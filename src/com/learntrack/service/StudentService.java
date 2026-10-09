@@ -42,15 +42,17 @@ public class StudentService {
 
     // Search student by ID
     public Student findStudentById(int id) throws EntityNotFoundException {
-        return students.stream()
-            .filter(student -> student.getId() == id)
-            .findFirst()
-            .orElseThrow(() ->
-                new EntityNotFoundException(
-                    "Student with ID " + id + " not found."
-                )
-            );
+        for (Student student : students) {
+            if (student.getId() == id) {
+                return student;
+            }
+        }
+
+        throw new EntityNotFoundException(
+                "Student with ID " + id + " not found."
+        );
     }
+
 
     // Deactivate a student (set active = false instead of deleting)
     public void deactivateStudent(int id) throws EntityNotFoundException {
@@ -60,6 +62,6 @@ public class StudentService {
 
     // list students
     public ArrayList<Student> listStudents() {
-        return students;
+        return new ArrayList<>(students);
     }
 }

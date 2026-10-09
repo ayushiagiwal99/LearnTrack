@@ -31,8 +31,8 @@ public class Student extends Person {
     }
 
     @Override
-    public void getDisplayName() {
-        System.out.println("Student Name: " + getFirstName() + " " + getLastName());
+    public String getDisplayName() {
+        return "Student Name: " + getFirstName() + " " + getLastName();
     }
 
     @Override

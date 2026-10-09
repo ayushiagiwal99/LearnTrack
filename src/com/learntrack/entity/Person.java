@@ -11,9 +11,7 @@ public class Person {
     private String email;
 
     public Person(int id, String firstName, String lastName, String email) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
+        this(id, firstName, lastName);
         this.email = email;
     }
 
@@ -51,7 +49,7 @@ public class Person {
         this.email = email;
     }
 
-    public void getDisplayName() {
-        System.out.println("Name: " + firstName + " " + lastName);
+    public String getDisplayName() {
+        return "Name: " + firstName + " " + lastName;
     }
 }

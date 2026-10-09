@@ -9,14 +9,14 @@ import com.learntrack.enums.EnrollmentStatus;
 import java.time.LocalDate;
 
 public class Enrollment {
-    private int enrollemntId;
+    private int enrollmentId;
     private int studentId;
     private int courseId;
     private LocalDate enrollmentDate;
     private EnrollmentStatus status;
 
     public Enrollment(int enrollemntId, int studentId, int courseId, LocalDate enrollmentDate, EnrollmentStatus status) {
-        this.enrollemntId = enrollemntId;
+        this.enrollmentId = enrollemntId;
         this.studentId = studentId;
         this.courseId = courseId;
         this.enrollmentDate = enrollmentDate;
@@ -33,8 +33,8 @@ public class Enrollment {
         );
     }
 
-    public int getEnrollemntId() {
-        return enrollemntId;
+    public int getEnrollmentId() {
+        return enrollmentId;
     }
 
     public int getStudentId() {
@@ -79,7 +79,7 @@ public class Enrollment {
 
     @Override
     public String toString() {
-        return "ID: " + enrollemntId
+        return "ID: " + enrollmentId
             + ", Student ID: " + studentId
             + ", Course ID: " + courseId
             + ", Enrollment Date: " + enrollmentDate

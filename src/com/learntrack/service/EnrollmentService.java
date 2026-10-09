@@ -4,6 +4,7 @@
  */
 package com.learntrack.service;
 
+import com.learntrack.entity.Course;
 import com.learntrack.entity.Enrollment;
 import com.learntrack.entity.Student;
 import com.learntrack.enums.EnrollmentStatus;
@@ -40,10 +41,10 @@ public class EnrollmentService {
             );
         }
 
-        courseService.findById(courseId);
+        Course course = courseService.findById(courseId);
 
         // Check that the course is active
-        if (!courseService.findById(courseId).isActive()) {
+        if (!course.isActive()) {
             throw new InvalidInputException(
                     "Course with ID " + courseId + " is inactive."
             );
@@ -95,7 +96,7 @@ public class EnrollmentService {
      */
     public Enrollment findById(int id) throws EntityNotFoundException {
         return enrollments.stream()
-            .filter(enrollment -> enrollment.getEnrollemntId() == id)
+            .filter(enrollment -> enrollment.getEnrollmentId() == id)
             .findFirst()
             .orElseThrow(() ->
                 new EntityNotFoundException(
@@ -142,23 +143,24 @@ public class EnrollmentService {
      * Returns all enrollments.
      */
     public ArrayList<Enrollment> listEnrollments() {
-        return enrollments;
+        return new ArrayList<>(enrollments);
     }
 
     /**
      * Checks whether a student already has an active enrollment
      * for the specified course.
      */
-    private boolean isAlreadyEnrolled(
-        int studentId,
-        int courseId) {
-
-        return enrollments.stream()
-            .anyMatch(enrollment ->
-                enrollment.getStudentId() == studentId
+    private boolean isAlreadyEnrolled(int studentId, int courseId) {
+        for (Enrollment enrollment : enrollments) {
+            if (enrollment.getStudentId() == studentId
                     && enrollment.getCourseId() == courseId
-                    && enrollment.getStatus() == EnrollmentStatus.ACTIVE
-            );
+                    && enrollment.getStatus() == EnrollmentStatus.ACTIVE) {
+                return true;
+            }
+        }
+
+        return false;
     }
+
 
 }

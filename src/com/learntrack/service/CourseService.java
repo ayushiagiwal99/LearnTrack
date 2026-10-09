@@ -42,19 +42,19 @@ public class CourseService {
     }
 
     public ArrayList<Course> listCourses() {
-        return courses;
+        return new ArrayList<>(courses);
     }
 
     public Course findById(int id) throws EntityNotFoundException {
+        for (Course course : courses) {
+            if (course.getCourseId() == id) {
+                return course;
+            }
+        }
 
-        return courses.stream()
-            .filter(course -> course.getCourseId() == id)
-            .findFirst()
-            .orElseThrow(() ->
-                    new EntityNotFoundException(
-                            "Course with ID " + id + " not found."
-                    )
-            );
+        throw new EntityNotFoundException(
+                "Course with ID " + id + " not found."
+        );
     }
 
     public void updateCourse(

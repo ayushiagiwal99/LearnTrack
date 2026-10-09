@@ -33,27 +33,22 @@ public class Main {
             displayMainMenu();
             int choice = readInt("Enter your choice: ");
 
-            try {
-                switch (choice) {
-                    case MenuConstants.STUDENT_MENU:
-                        studentMenu();
-                        break;
-                    case MenuConstants.COURSE_MENU:
-                        courseMenu();
-                        break;
-                    case MenuConstants.ENROLLMENT_MENU:
-                        enrollmentMenu();
-                        break;
-                    case MenuConstants.EXIT:
-                        running = false;
-                        System.out.println("Exiting LearnTrack. Goodbye!");
-                        break;
-                    default:
-                        System.out.println("Invalid choice. Please try again.");
-                }
-
-            } catch (EntityNotFoundException | InvalidInputException e) {
-                System.out.println("Error: " + e.getMessage());
+            switch (choice) {
+                case MenuConstants.STUDENT_MENU:
+                    studentMenu();
+                    break;
+                case MenuConstants.COURSE_MENU:
+                    courseMenu();
+                    break;
+                case MenuConstants.ENROLLMENT_MENU:
+                    enrollmentMenu();
+                    break;
+                case MenuConstants.EXIT:
+                    running = false;
+                    System.out.println("Exiting LearnTrack. Goodbye!");
+                    break;
+                default:
+                    System.out.println("Invalid choice. Please try again.");
             }
         }
 
@@ -76,14 +71,11 @@ public class Main {
     // =========================
     // Student Menu
     // =========================
-
-    private static void studentMenu()
-            throws EntityNotFoundException, InvalidInputException {
+    private static void studentMenu() {
 
         boolean back = false;
 
         while (!back) {
-
             System.out.println("\n===== Student Management =====");
             System.out.println("1. Add Student");
             System.out.println("2. View All Students");
@@ -93,27 +85,32 @@ public class Main {
 
             int choice = readInt("Enter your choice: ");
 
-            switch (choice) {
-                case MenuConstants.ADD_STUDENT:
-                    addStudent();
-                    break;
-                case MenuConstants.VIEW_STUDENTS:
-                    viewStudents();
-                    break;
-                case MenuConstants.SEARCH_STUDENT:
-                    searchStudent();
-                    break;
-                case MenuConstants.DEACTIVATE_STUDENT:
-                    deactivateStudent();
-                    break;
-                case MenuConstants.BACK:
-                    back = true;
-                    break;
-                default:
-                    System.out.println("Invalid choice. Please try again.");
+            try {
+                switch (choice) {
+                    case MenuConstants.ADD_STUDENT:
+                        addStudent();
+                        break;
+                    case MenuConstants.VIEW_STUDENTS:
+                        viewStudents();
+                        break;
+                    case MenuConstants.SEARCH_STUDENT:
+                        searchStudent();
+                        break;
+                    case MenuConstants.DEACTIVATE_STUDENT:
+                        deactivateStudent();
+                        break;
+                    case MenuConstants.BACK:
+                        back = true;
+                        break;
+                    default:
+                        System.out.println("Invalid choice. Please try again.");
+                }
+            } catch (EntityNotFoundException | InvalidInputException e) {
+                System.out.println("Error: " + e.getMessage());
             }
         }
     }
+
 
     private static void addStudent()
             throws InvalidInputException {
@@ -156,11 +153,11 @@ public class Main {
     // =========================
     // Course Menu
     // =========================
+    private static void courseMenu() {
 
-    private static void courseMenu() throws EntityNotFoundException, InvalidInputException {
         boolean back = false;
-        while (!back) {
 
+        while (!back) {
             System.out.println("\n===== Course Management =====");
             System.out.println("1. Add Course");
             System.out.println("2. View All Courses");
@@ -169,24 +166,29 @@ public class Main {
             System.out.println("5. Back");
 
             int choice = readInt("Enter your choice: ");
-            switch (choice) {
-                case MenuConstants.ADD_COURSE:
-                    addCourse();
-                    break;
-                case MenuConstants.VIEW_COURSES:
-                    viewCourses();
-                    break;
-                case MenuConstants.ACTIVATE_COURSE:
-                    activateCourse();
-                    break;
-                case MenuConstants.DEACTIVATE_COURSE:
-                    deactivateCourse();
-                    break;
-                case MenuConstants.BACK:
-                    back = true;
-                    break;
-                default:
-                    System.out.println("Invalid choice. Please try again.");
+
+            try {
+                switch (choice) {
+                    case MenuConstants.ADD_COURSE:
+                        addCourse();
+                        break;
+                    case MenuConstants.VIEW_COURSES:
+                        viewCourses();
+                        break;
+                    case MenuConstants.ACTIVATE_COURSE:
+                        activateCourse();
+                        break;
+                    case MenuConstants.DEACTIVATE_COURSE:
+                        deactivateCourse();
+                        break;
+                    case MenuConstants.BACK:
+                        back = true;
+                        break;
+                    default:
+                        System.out.println("Invalid choice. Please try again.");
+                }
+            } catch (EntityNotFoundException | InvalidInputException e) {
+                System.out.println("Error: " + e.getMessage());
             }
         }
     }
@@ -195,7 +197,7 @@ public class Main {
 
         String courseName = readString("Enter course name: ");
         String description = readString("Enter description: ");
-        String active = readString("Course is active: [y/n]");
+        boolean active = readYesNo("Course is active: [y/n]: ");
         int durationInWeeks =
                 readInt("Enter duration in weeks: ");
 
@@ -203,7 +205,7 @@ public class Main {
                 courseName,
                 description,
                 durationInWeeks,
-                active.toLowerCase().equals("y")
+                active
         );
 
         System.out.println("Course added successfully");
@@ -241,8 +243,10 @@ public class Main {
     // Enrollment Menu
     // =========================
 
-    private static void enrollmentMenu() throws EntityNotFoundException, InvalidInputException {
+    private static void enrollmentMenu() {
+
         boolean back = false;
+
         while (!back) {
             System.out.println("\n===== Enrollment Management =====");
             System.out.println("1. Enroll Student in Course");
@@ -252,24 +256,29 @@ public class Main {
             System.out.println("5. Back");
 
             int choice = readInt("Enter your choice: ");
-            switch (choice) {
-                case MenuConstants.ENROLL_STUDENT:
-                    enrollStudent();
-                    break;
-                case MenuConstants.VIEW_STUDENT_ENROLLMENTS:
-                    viewStudentEnrollments();
-                    break;
-                case MenuConstants.COMPLETE_ENROLLMENT:
-                    completeEnrollment();
-                    break;
-                case MenuConstants.CANCEL_ENROLLMENT:
-                    cancelEnrollment();
-                    break;
-                case MenuConstants.BACK:
-                    back = true;
-                    break;
-                default:
-                    System.out.println("Invalid choice. Please try again.");
+
+            try {
+                switch (choice) {
+                    case MenuConstants.ENROLL_STUDENT:
+                        enrollStudent();
+                        break;
+                    case MenuConstants.VIEW_STUDENT_ENROLLMENTS:
+                        viewStudentEnrollments();
+                        break;
+                    case MenuConstants.COMPLETE_ENROLLMENT:
+                        completeEnrollment();
+                        break;
+                    case MenuConstants.CANCEL_ENROLLMENT:
+                        cancelEnrollment();
+                        break;
+                    case MenuConstants.BACK:
+                        back = true;
+                        break;
+                    default:
+                        System.out.println("Invalid choice. Please try again.");
+                }
+            } catch (EntityNotFoundException | InvalidInputException e) {
+                System.out.println("Error: " + e.getMessage());
             }
         }
     }
@@ -333,6 +342,24 @@ public class Main {
             }
         }
     }
+
+    private static boolean readYesNo(String message) {
+        while (true) {
+            System.out.print(message);
+            String input = scanner.nextLine().trim();
+
+            if (input.equalsIgnoreCase("y")) {
+                return true;
+            }
+
+            if (input.equalsIgnoreCase("n")) {
+                return false;
+            }
+
+            System.out.println("Invalid input. Please enter 'y' or 'n'.");
+        }
+    }
+
 
     private static String readString(String message) {
         System.out.print(message);
